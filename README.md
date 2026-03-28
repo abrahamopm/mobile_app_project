@@ -4,12 +4,12 @@
 
 **Amlak-Link** is a back-office productivity tool built for independent real estate agents. It helps manage property portfolios and track the buyer's journey by logging house viewings, recording client feedback, and monitoring interest levels — replacing messy notebooks with a clean, data-driven system.
 
-## Core Features
+## CRUD Features (minimum)
 
-### 1. Property Portfolio Management (CRUD)
+### CRUD 1. Property Portfolio Management
 Add, view, update, and delete properties with details like location, price, rooms, and status.
 
-### 2. Client Viewing & Feedback Tracker (CRUD)
+### CRUD 2. Client Viewing & Feedback Tracker
 Log viewings, record client feedback, assign Interest Scores (1–5 stars), and track interactions between clients and properties.
 
 ## Design Approach
@@ -26,6 +26,4 @@ Includes role-based authorization: Agents see only their own leads; Admins view 
 | Melika Mohammed     | UGR/4806/16  |
 | Yordanos Teshome    | UGR/0489/16  |
 
----
 
-**Amlak-Link** — Never lose a lead again.
