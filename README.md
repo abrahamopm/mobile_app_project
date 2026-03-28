@@ -2,7 +2,7 @@
 
 ## Project Description
 
-**Amlak-Link** is a back-office productivity tool built for independent real estate agents. It helps manage property portfolios and track the buyer's journey by logging house viewings, recording client feedback, and monitoring interest levels — replacing messy notebooks with a clean, data-driven system.
+**Amlak-Link** is a back-office productivity tool built for independent real estate agents. It helps manage property portfolios and track the buyer's journey by logging house viewings, recording client feedback, and monitoring interest levels, replacing messy notebooks with a clean, data-driven system.
 
 ## CRUD Features (minimum)
 
