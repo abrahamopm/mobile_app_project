@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:afalagi/core/theme/theme.dart';
 import 'package:go_router/go_router.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -7,17 +8,13 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0F1A1C),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(24),
-          width: 350,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
-          ),
+
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
               Column(
@@ -27,9 +24,10 @@ class SignupScreen extends StatelessWidget {
                   Text(
                     "Afalagi",
                     style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
                   ),
                 ],
               ),
@@ -39,11 +37,7 @@ class SignupScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "Enter your details to begin your journey.",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
-              ),
+              const Text("Enter your details to begin your journey."),
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
@@ -87,12 +81,33 @@ class SignupScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Row(
-                children: const [
+                children: [
                   Checkbox(value: false, onChanged: null),
                   Expanded(
-                    child: Text(
-                        "I agree to the Terms of Service and Privacy Policy."),
-                  )
+                    child: Text.rich(
+                      TextSpan(
+                        text: "I agree to the ",
+                        children: [
+                          TextSpan(
+                            text: "Terms of Service",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.primaryColor,
+                            ),
+                          ),
+                          TextSpan(text: " and "),
+                          TextSpan(
+                            text: "Privacy Policy",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.primaryColor,
+                            ),
+                          ),
+                          TextSpan(text: "."),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -102,7 +117,8 @@ class SignupScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF243E63),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   onPressed: () => context.go('/dashboard'),
@@ -119,11 +135,13 @@ class SignupScreen extends StatelessWidget {
                     child: const Text(
                       "Sign In",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
