@@ -1,39 +1,25 @@
+import 'package:afalagi/core/widgets/image.dart';
 import 'package:flutter/material.dart';
-
+import 'package:afalagi/core/widgets/button.dart';
+import 'package:afalagi/core/theme/theme.dart';
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0F1A1C),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(24),
-          width: 350,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
-          ),
+          
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
 
               
-              Column(
-                children: const [
-                  Icon(Icons.home, size: 60, color: Colors.teal),
-                  SizedBox(height: 10),
-                  Text(
-                    "Afalagi",
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal),
-                  ),
-                ],
-              ),
+              CustomImages.appLogo(height: 55),
 
               const SizedBox(height: 20),
 
@@ -46,14 +32,21 @@ class SignupScreen extends StatelessWidget {
 
               const Text(
                 "Enter your details to begin your journey.",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
               ),
 
               const SizedBox(height: 20),
 
-              
+        Text(
+                  "FULL NAME",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppTheme.primaryColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),      
+                SizedBox(height: 10),
               TextField(
+        
                 decoration: InputDecoration(
                   hintText: "Kaleab Mulugeta",
                   prefixIcon: const Icon(Icons.person),
@@ -68,7 +61,15 @@ class SignupScreen extends StatelessWidget {
 
               const SizedBox(height: 15),
 
-              
+              Text(
+                  "EMAIL ADDRESS",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppTheme.primaryColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),      
+                SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
                   hintText: "kalili@gmail.com",
@@ -84,7 +85,15 @@ class SignupScreen extends StatelessWidget {
 
               const SizedBox(height: 15),
 
-              
+              Text(
+                  "PASSWORD",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppTheme.primaryColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),      
+                SizedBox(height: 10),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -103,12 +112,33 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 10),
 
               Row(
-                children: const [
+                children:  [
                   Checkbox(value: false, onChanged: null),
                   Expanded(
-                    child: Text(
-                        "I agree to the Terms of Service and Privacy Policy."),
-                  )
+                    child: Text.rich(
+                      TextSpan(
+                        text: "I agree to the ",
+                        children: [
+                          TextSpan(
+                            text: "Terms of Service",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.primaryColor,
+                            ),
+                          ),
+                          TextSpan(text: " and "),
+                          TextSpan(
+                            text: "Privacy Policy",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.primaryColor,
+                            ),
+                          ),
+                          TextSpan(text: "."),
+                        ],
+                      ),
+                    ),
+                    ),
                 ],
               ),
 
@@ -117,15 +147,11 @@ class SignupScreen extends StatelessWidget {
               
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF243E63),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  onPressed: () {},
-                  child: const Text("Sign Up", style: TextStyle(fontSize: 16)),
+                child: CustomButton(
+                  text: "Sign Up",
+                  onPressed: () {
+                    
+                  },
                 ),
               ),
 
