@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LogViewingScreen extends StatelessWidget {
   final String? propertyId;
@@ -8,10 +9,8 @@ class LogViewingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // If null, try to get from arguments
-    final Map? args = ModalRoute.of(context)?.settings.arguments as Map?;
-    final String pId = propertyId ?? args?['propertyId'] ?? 'N/A';
-    final String cId = clientId ?? args?['clientId'] ?? 'N/A';
+    final String pId = propertyId ?? 'N/A';
+    final String cId = clientId ?? 'N/A';
 
     return Scaffold(
       appBar: AppBar(title: const Text('Log Viewing')),
@@ -24,7 +23,7 @@ class LogViewingScreen extends StatelessWidget {
             const TextField(decoration: InputDecoration(labelText: 'Notes')),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               child: const Text('Save Log'),
             ),
           ],

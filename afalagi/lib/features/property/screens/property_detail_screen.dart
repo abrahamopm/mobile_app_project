@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../models/property_model.dart';
 
 class PropertyDetailScreen extends StatelessWidget {
@@ -14,11 +15,7 @@ class PropertyDetailScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
-            onPressed: () => Navigator.pushNamed(
-              context, 
-              '/edit-property',
-              arguments: property,
-            ),
+            onPressed: () => context.push('/edit-property', extra: property),
           ),
         ],
       ),
@@ -27,19 +24,18 @@ class PropertyDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Price: \$${property.price}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('Price: \$${property.price}',
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(property.description),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Navigate to Viewing with IDs
-                Navigator.pushNamed(
-                  context, 
+                context.push(
                   '/log-viewing',
-                  arguments: {
+                  extra: {
                     'propertyId': property.id,
-                    'clientId': 'dummy_client_id', // Would come from a selector in real app
+                    'clientId': 'dummy_client_id',
                   },
                 );
               },

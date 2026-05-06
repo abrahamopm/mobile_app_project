@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -25,7 +26,7 @@ class DashboardScreen extends StatelessWidget {
   Widget _buildCard(BuildContext context, String title, IconData icon, String route) {
     return Card(
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, route),
+        onTap: () => context.push(route),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

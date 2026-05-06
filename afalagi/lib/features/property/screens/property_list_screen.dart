@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../models/property_model.dart';
-import 'property_detail_screen.dart';
 
 class PropertyListScreen extends StatelessWidget {
   const PropertyListScreen({super.key});
@@ -22,19 +22,12 @@ class PropertyListScreen extends StatelessWidget {
           return ListTile(
             title: Text(property.title),
             subtitle: Text('\$${property.price}'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => PropertyDetailScreen(property: property),
-                ),
-              );
-            },
+            onTap: () => context.push('/property-detail', extra: property),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/add-property'),
+        onPressed: () => context.push('/add-property'),
         child: const Icon(Icons.add),
       ),
     );

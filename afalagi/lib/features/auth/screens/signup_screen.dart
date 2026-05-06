@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -19,8 +20,6 @@ class SignupScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 20),
-
-              
               Column(
                 children: const [
                   Icon(Icons.home, size: 60, color: Colors.teal),
@@ -34,25 +33,18 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 20),
-
               const Text(
                 "Create Account",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-
               const SizedBox(height: 8),
-
               const Text(
                 "Enter your details to begin your journey.",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
-
               const SizedBox(height: 20),
-
-              
               TextField(
                 decoration: InputDecoration(
                   hintText: "Kaleab Mulugeta",
@@ -65,10 +57,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 15),
-
-              
               TextField(
                 decoration: InputDecoration(
                   hintText: "kalili@gmail.com",
@@ -81,10 +70,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 15),
-
-              
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -99,9 +85,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 10),
-
               Row(
                 children: const [
                   Checkbox(value: false, onChanged: null),
@@ -111,10 +95,7 @@ class SignupScreen extends StatelessWidget {
                   )
                 ],
               ),
-
               const SizedBox(height: 10),
-
-              
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -124,22 +105,17 @@ class SignupScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  onPressed: () {},
+                  onPressed: () => context.go('/dashboard'),
                   child: const Text("Sign Up", style: TextStyle(fontSize: 16)),
                 ),
               ),
-
               const SizedBox(height: 15),
-
-              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Already have an account? "),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                    onTap: () => context.pop(),
                     child: const Text(
                       "Sign In",
                       style: TextStyle(

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'features/auth/screens/splash_screen.dart';
 import 'features/auth/screens/login_screen.dart';
 import 'features/auth/screens/signup_screen.dart';
 import 'features/property/screens/property_list_screen.dart';
 import 'features/property/screens/add_property_screen.dart';
 import 'features/property/screens/edit_property_screen.dart';
+import 'features/property/screens/property_detail_screen.dart';
+import 'features/property/models/property_model.dart';
 import 'features/client/screens/client_list_screen.dart';
+import 'features/client/screens/client_detail_screen.dart';
+import 'features/client/models/client_model.dart';
 import 'features/viewing/screens/log_viewing_screen.dart';
 import 'features/viewing/screens/viewing_history_screen.dart';
 import 'features/appointment/screens/dashboard_screen.dart';
@@ -20,9 +25,11 @@ class AppRoutes {
   static const String signup = '/signup';
   static const String dashboard = '/dashboard';
   static const String properties = '/properties';
+  static const String propertyDetail = '/property-detail';
   static const String addProperty = '/add-property';
   static const String editProperty = '/edit-property';
   static const String clients = '/clients';
+  static const String clientDetail = '/client-detail';
   static const String logViewing = '/log-viewing';
   static const String viewingHistory = '/viewing-history';
   static const String appointments = '/appointments';
@@ -30,20 +37,88 @@ class AppRoutes {
   static const String settings = '/settings';
   static const String activityLog = '/activity-log';
 
-  static Map<String, WidgetBuilder> get routes => {
-    initial: (context) => const SplashScreen(),
-    login: (context) => const LoginScreen(),
-    signup: (context) => const SignupScreen(),
-    dashboard: (context) => const DashboardScreen(),
-    properties: (context) => const PropertyListScreen(),
-    addProperty: (context) => const AddPropertyScreen(),
-    editProperty: (context) => const EditPropertyScreen(),
-    clients: (context) => const ClientListScreen(),
-    logViewing: (context) => const LogViewingScreen(),
-    viewingHistory: (context) => const ViewingHistoryScreen(),
-    appointments: (context) => const AppointmentScreen(),
-    profile: (context) => const ProfileScreen(),
-    settings: (context) => const SettingsScreen(),
-    activityLog: (context) => const ActivityLogScreen(),
-  };
+  static final router = GoRouter(
+    initialLocation: initial,
+    routes: [
+      GoRoute(
+        path: initial,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: signup,
+        builder: (context, state) => const SignupScreen(),
+      ),
+      GoRoute(
+        path: dashboard,
+        builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: properties,
+        builder: (context, state) => const PropertyListScreen(),
+      ),
+      GoRoute(
+        path: propertyDetail,
+        builder: (context, state) {
+          final property = state.extra as Property;
+          return PropertyDetailScreen(property: property);
+        },
+      ),
+      GoRoute(
+        path: addProperty,
+        builder: (context, state) => const AddPropertyScreen(),
+      ),
+      GoRoute(
+        path: editProperty,
+        builder: (context, state) {
+          final property = state.extra as Property;
+          return EditPropertyScreen(property: property);
+        },
+      ),
+      GoRoute(
+        path: clients,
+        builder: (context, state) => const ClientListScreen(),
+      ),
+      GoRoute(
+        path: clientDetail,
+        builder: (context, state) {
+          final client = state.extra as Client;
+          return ClientDetailScreen(client: client);
+        },
+      ),
+      GoRoute(
+        path: logViewing,
+        builder: (context, state) {
+          final args = state.extra as Map<String, dynamic>?;
+          return LogViewingScreen(
+            propertyId: args?['propertyId'],
+            clientId: args?['clientId'],
+          );
+        },
+      ),
+      GoRoute(
+        path: viewingHistory,
+        builder: (context, state) => const ViewingHistoryScreen(),
+      ),
+      GoRoute(
+        path: appointments,
+        builder: (context, state) => const AppointmentScreen(),
+      ),
+      GoRoute(
+        path: profile,
+        builder: (context, state) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: settings,
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: activityLog,
+        builder: (context, state) => const ActivityLogScreen(),
+      ),
+    ],
+  );
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:afalagi/core/widgets/image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigate() {
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/login');
+      context.go('/login');
     });
   }
 

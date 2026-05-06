@@ -11,12 +11,11 @@ class AfalagiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Afalagi Mobile',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.initial,
-      routes: AppRoutes.routes,
+      routerConfig: AppRoutes.router,
     );
   }
 }
