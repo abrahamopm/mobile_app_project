@@ -1,3 +1,4 @@
+import 'package:afalagi/core/widgets/button.dart';
 import 'package:afalagi/core/widgets/image.dart';
 import 'package:afalagi/core/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -121,20 +122,7 @@ class LoginScreen extends StatelessWidget {
 
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Sign in",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                ),
+                child: CustomButton(text: "Sign in", onPressed: () {}),
               ),
 
               const SizedBox(height: 15),
