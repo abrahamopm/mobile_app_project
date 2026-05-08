@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AddPropertyScreen extends StatelessWidget {
   const AddPropertyScreen({super.key});
@@ -18,7 +19,7 @@ class AddPropertyScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => context.pop(),
         child: const Icon(Icons.check),
       ),
     );

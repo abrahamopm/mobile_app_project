@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../models/client_model.dart';
 
 class ClientDetailScreen extends StatelessWidget {
@@ -20,10 +21,9 @@ class ClientDetailScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                 Navigator.pushNamed(
-                  context, 
+                context.push(
                   '/log-viewing',
-                  arguments: {
+                  extra: {
                     'propertyId': 'dummy_property_id',
                     'clientId': client.id,
                   },

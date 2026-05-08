@@ -1,3 +1,4 @@
+import 'package:afalagi/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -16,10 +17,12 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: color,
+        backgroundColor: AppTheme.primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       onPressed: onPressed,
-      child: Text(text),
+      child: Text(text, style: TextStyle(fontSize: 16, color: Colors.white)),
     );
   }
 }
