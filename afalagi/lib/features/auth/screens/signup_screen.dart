@@ -28,7 +28,7 @@ class SignupScreen extends StatelessWidget {
               const Text("Enter your details to begin your journey."),
               const SizedBox(height: 20),
               Text(
-                "EMAIL ADDRESS",
+                "FULL NAME",
                 style: TextStyle(
                   fontSize: 12,
                   color: AppTheme.primaryColor,
