@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
     ThemeData theme = Theme.of(context);
 
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(24),
           child: Column(

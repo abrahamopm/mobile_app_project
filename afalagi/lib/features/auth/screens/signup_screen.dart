@@ -2,13 +2,14 @@ import 'package:afalagi/core/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:afalagi/core/theme/theme.dart';
 import 'package:go_router/go_router.dart';
+import 'package:afalagi/core/widgets/image.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(24),
 
@@ -17,20 +18,7 @@ class SignupScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Column(
-                children: const [
-                  Icon(Icons.home, size: 60, color: Colors.teal),
-                  SizedBox(height: 10),
-                  Text(
-                    "Afalagi",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
+              CustomImages.appLogo(height: 55),
               const SizedBox(height: 20),
               const Text(
                 "Create Account",
@@ -39,6 +27,15 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 8),
               const Text("Enter your details to begin your journey."),
               const SizedBox(height: 20),
+              Text(
+                "FULL NAME",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppTheme.primaryColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
                   hintText: "Kaleab Mulugeta",
@@ -52,6 +49,15 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+              Text(
+                "EMAIL ADDRESS",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppTheme.primaryColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
                   hintText: "kalili@gmail.com",
@@ -65,6 +71,15 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+              Text(
+                "PASSWORD",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppTheme.primaryColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 10),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
