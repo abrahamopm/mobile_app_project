@@ -35,7 +35,7 @@ class _LogViewingScreenState extends State<LogViewingScreen> {
     _clientId = widget.viewing?.clientId ?? widget.clientId ?? 'c1';
     _propertyTitle = widget.viewing?.propertyTitle ?? 'Bole High-Rise Penthouse';
     _clientName = widget.viewing?.clientName ?? 'Almaz Abraham';
-    _imageUrl = widget.viewing?.imageUrl ?? 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2071';
+    _imageUrl = widget.viewing?.imageUrl ?? 'assets/images/bole_penthouse.png';
     _price = widget.viewing?.price ?? '18.9M';
     _status = widget.viewing?.status ?? 'Recent';
   }

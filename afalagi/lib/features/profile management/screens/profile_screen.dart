@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     child: ClipOval(
                       child: CustomImages.resilientImage(
-                        'https://api.dicebear.com/7.x/avataaars/png?seed=Dawit',
+                        'assets/images/agent_profile.png',
                         width: 120,
                         height: 120,
                         fit: BoxFit.cover,

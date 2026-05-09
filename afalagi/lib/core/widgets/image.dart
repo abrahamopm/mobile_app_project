@@ -14,13 +14,24 @@ class CustomImages {
   }
 
   static Image resilientImage(
-    String url, {
+    String path, {
     double? width,
     double? height,
     BoxFit? fit,
   }) {
+    if (path.startsWith('assets/')) {
+      return Image.asset(
+        path,
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (context, error, stackTrace) {
+          return Image.asset(logoImage);
+        },
+      );
+    }
     return Image.network(
-      url,
+      path,
       width: width,
       height: height,
       fit: fit,

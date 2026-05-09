@@ -245,7 +245,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                             beds: int.tryParse(_bedroomsController.text) ?? 0,
                             baths: int.tryParse(_bathroomsController.text) ?? 0,
                             sqft: int.tryParse(_sqmController.text) ?? 0,
-                            imageUrl: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200',
+                            imageUrl: 'assets/images/luxury_villa.png',
                           );
                           
                           PropertyService.addProperty(newProperty);

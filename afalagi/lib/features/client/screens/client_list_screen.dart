@@ -229,7 +229,7 @@ class _ClientListScreenState extends State<ClientListScreen> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: CustomImages.resilientImage(
-                          'https://api.dicebear.com/7.x/avataaars/png?seed=${client['name']}',
+                          'assets/images/client_avatar_1.png',
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover),
@@ -294,7 +294,7 @@ class _ClientListScreenState extends State<ClientListScreen> {
             children: [
               ClipOval(
                   child: CustomImages.resilientImage(
-                      'https://api.dicebear.com/7.x/avataaars/png?seed=${client['name']}',
+                      'assets/images/generic_avatar.png',
                       width: 48,
                       height: 48)),
               const SizedBox(width: 12),

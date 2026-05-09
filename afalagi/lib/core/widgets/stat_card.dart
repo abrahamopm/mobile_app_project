@@ -105,13 +105,13 @@ class StatCard extends StatelessWidget {
                     children: [
                       const CircleAvatar(
                         radius: 12,
-                        backgroundImage: NetworkImage('https://i.pravatar.cc/150?u=1'),
+                        backgroundImage: AssetImage('assets/images/client_avatar_1.png'),
                       ),
                       const Positioned(
                         left: 15,
                         child: CircleAvatar(
                           radius: 12,
-                          backgroundImage: NetworkImage('https://i.pravatar.cc/150?u=2'),
+                          backgroundImage: AssetImage('assets/images/client_avatar_2.png'),
                         ),
                       ),
                       Positioned(
