@@ -1,12 +1,78 @@
 import 'package:afalagi/core/theme/theme.dart';
+import 'package:afalagi/features/viewing/models/viewing_model.dart';
+import 'package:afalagi/features/viewing/viewing_service.dart';
 import 'package:afalagi/features/viewing/widgets/viewing_cards.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class ViewingHistoryScreen extends StatelessWidget {
+class ViewingHistoryScreen extends StatefulWidget {
   final String? propertyId;
   final String? clientId;
 
   const ViewingHistoryScreen({super.key, this.propertyId, this.clientId});
+
+  @override
+  State<ViewingHistoryScreen> createState() => _ViewingHistoryScreenState();
+}
+
+class _ViewingHistoryScreenState extends State<ViewingHistoryScreen> {
+  late List<Viewing> _viewings;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadViewings();
+  }
+
+  void _loadViewings() {
+    _viewings = ViewingService.getViewings();
+    if (widget.propertyId != null) {
+      _viewings = _viewings.where((v) => v.propertyId == widget.propertyId).toList();
+    }
+    if (widget.clientId != null) {
+      _viewings = _viewings.where((v) => v.clientId == widget.clientId).toList();
+    }
+  }
+
+  void _deleteViewing(String id) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: const Text('Delete Viewing'),
+        content: const Text('Are you sure you want to delete this viewing log?'),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text('Cancel'),
+            onPressed: () => Navigator.pop(context),
+          ),
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            child: const Text('Delete'),
+            onPressed: () {
+              setState(() {
+                ViewingService.deleteViewing(id);
+                _loadViewings();
+              });
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Viewing deleted successfully')),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _editViewing(Viewing viewing) {
+    // Navigate to log viewing screen with viewing data
+    context.push('/log-viewing', extra: viewing).then((_) {
+      setState(() {
+        _loadViewings();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +82,12 @@ class ViewingHistoryScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             Padding(
               padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'MARKET INSIGHTS',
                     style: TextStyle(
                       color: Colors.blueGrey,
@@ -40,15 +105,15 @@ class ViewingHistoryScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  if (propertyId != null || clientId != null) ...[
+                  if (widget.propertyId != null || widget.clientId != null) ...[
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        if (propertyId != null)
-                          _buildFilterChip('Property: $propertyId', Icons.apartment),
-                        if (clientId != null) ...[
+                        if (widget.propertyId != null)
+                          _buildFilterChip('Property: ${widget.propertyId}', Icons.apartment),
+                        if (widget.clientId != null) ...[
                           const SizedBox(width: 8),
-                          _buildFilterChip('Client: $clientId', Icons.person_outline),
+                          _buildFilterChip('Client: ${widget.clientId}', Icons.person_outline),
                         ],
                       ],
                     ),
@@ -56,52 +121,58 @@ class ViewingHistoryScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  RecentViewingCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2071',
-                    title: 'Bole High-Rise Penthouse',
-                    date: 'Oct 24, 2023 - 10:30 AM',
-                    clientName: 'Almaz Abraham',
-                    clientInitials: 'AA',
-                    onEdit: () {},
-                    onDelete: () {},
-                  ),
-                  CompactViewingCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=2070',
-                    title: 'CMC Estate Villa 42',
-                    clientName: 'Dawit Getachew',
-                    price: '12.5M',
-                    date: 'OCT 22',
-                    status: 'Completed',
-                    onEdit: () {},
-                    onDelete: () {},
-                  ),
-                  CompactViewingCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=2070',
-                    title: 'Old Airport Apartment',
-                    clientName: 'Sara Tekle',
-                    price: '8.2M',
-                    date: 'OCT 18',
-                    status: 'Second Viewing',
-                    onEdit: () {},
-                    onDelete: () {},
-                  ),
-                  CompactViewingCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070',
-                    title: 'Kazanchis Office Space',
-                    clientName: 'Tewodros Kassahun',
-                    price: '15k',
-                    date: 'OCT 12',
-                    status: 'Cancelled',
-                    onEdit: () {},
-                    onDelete: () {},
-                  ),
-                ],
-              ),
+              child: _viewings.isEmpty
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Column(
+                          children: [
+                            Icon(CupertinoIcons.doc_text, size: 64, color: Colors.grey[300]),
+                            const SizedBox(height: 16),
+                            Text(
+                              'No viewings found',
+                              style: TextStyle(color: Colors.grey[400], fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  : Column(
+                      children: _viewings.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final viewing = entry.value;
+                        if (index == 0 && widget.propertyId == null && widget.clientId == null) {
+                          return RecentViewingCard(
+                            imageUrl: viewing.imageUrl,
+                            title: viewing.propertyTitle,
+                            date: viewing.date,
+                            clientName: viewing.clientName,
+                            clientInitials: viewing.clientName.isNotEmpty
+                                ? viewing.clientName
+                                    .split(' ')
+                                    .where((e) => e.isNotEmpty)
+                                    .map((e) => e[0])
+                                    .join()
+                                    .toUpperCase()
+                                : '??',
+                            onEdit: () => _editViewing(viewing),
+                            onDelete: () => _deleteViewing(viewing.id),
+                          );
+                        }
+                        return CompactViewingCard(
+                          imageUrl: viewing.imageUrl,
+                          title: viewing.propertyTitle,
+                          clientName: viewing.clientName,
+                          price: viewing.price,
+                          date: viewing.date,
+                          status: viewing.status,
+                          onEdit: () => _editViewing(viewing),
+                          onDelete: () => _deleteViewing(viewing.id),
+                        );
+                      }).toList(),
+                    ),
             ),
             const SizedBox(height: 24),
           ],
@@ -135,5 +206,4 @@ class ViewingHistoryScreen extends StatelessWidget {
       ),
     );
   }
-
 }
