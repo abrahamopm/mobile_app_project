@@ -11,13 +11,14 @@ import 'features/property/models/property_model.dart';
 import 'features/client/screens/client_list_screen.dart';
 import 'features/client/screens/client_detail_screen.dart';
 import 'features/client/models/client_model.dart';
-import 'features/viewing/screens/log_viewing_screen.dart';
-import 'features/viewing/screens/viewing_history_screen.dart';
-import 'features/appointment/screens/dashboard_screen.dart';
-import 'features/appointment/screens/appointment_screen.dart';
-import 'features/appointment/screens/profile_screen.dart';
-import 'features/appointment/screens/settings_screen.dart';
-import 'features/appointment/screens/activity_log_screen.dart';
+import 'features/viewing/routes/viewing_routes.dart';
+import 'features/dashboard/screens/home_dashboard.dart';
+import 'features/profile management/screens/profile_screen.dart';
+import 'features/profile management/screens/delete_account_screen.dart';
+import 'features/profile management/screens/personal_info_screen.dart';
+import 'features/profile management/screens/agency_details_screen.dart';
+import 'features/tags/screens/tag_management_screen.dart';
+
 import 'core/widgets/shell_scaffold.dart';
 
 class AppRoutes {
@@ -72,28 +73,34 @@ class AppRoutes {
             builder: (context, state) =>
                 ClientDetailScreen(client: state.extra as Client),
           ),
-          GoRoute(
-            path: '/log-viewing',
-            builder: (context, state) {
-              final args = state.extra as Map<String, dynamic>?;
-              return LogViewingScreen(
-                propertyId: args?['propertyId'],
-                clientId: args?['clientId'],
-              );
-            },
-          ),
-          GoRoute(
-            path: '/viewing-history',
-            builder: (context, state) => const ViewingHistoryScreen(),
-          ),
+          ...ViewingRoutes.routes,
+          /*
           GoRoute(
             path: '/appointments',
             builder: (context, state) => const AppointmentScreen(),
           ),
+          */
           GoRoute(
             path: '/profile',
             builder: (context, state) => const ProfileScreen(),
           ),
+          GoRoute(
+            path: '/delete-account',
+            builder: (context, state) => const DeleteAccountScreen(),
+          ),
+          GoRoute(
+            path: '/personal-info',
+            builder: (context, state) => const PersonalInfoScreen(),
+          ),
+          GoRoute(
+            path: '/agency-details',
+            builder: (context, state) => const AgencyDetailsScreen(),
+          ),
+          GoRoute(
+            path: '/tag-management',
+            builder: (context, state) => const TagManagementScreen(),
+          ),
+          /*
           GoRoute(
             path: '/settings',
             builder: (context, state) => const SettingsScreen(),
@@ -102,6 +109,7 @@ class AppRoutes {
             path: '/activity-log',
             builder: (context, state) => const ActivityLogScreen(),
           ),
+          */
         ],
       ),
     ],
