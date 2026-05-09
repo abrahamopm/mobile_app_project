@@ -13,7 +13,7 @@ class CustomImages {
     );
   }
 
-  static Image reselientImage(
+  static Image resilientImage(
     String url, {
     double? width,
     double? height,
