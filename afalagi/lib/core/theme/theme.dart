@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final Color primaryColor = Color.fromARGB(255, 3, 23, 40);
+  static const Color accentColor = Color(0xFFB8860B);
   static ThemeData get lightTheme {
     return ThemeData(
       primarySwatch: MaterialColor(primaryColor.toARGB32(), {

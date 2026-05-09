@@ -6,6 +6,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? color;
   final Color? textColor;
+  final Color? iconColor;
   final IconData? icon;
 
   const CustomButton({
@@ -14,6 +15,7 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.color,
     this.textColor,
+    this.iconColor,
     this.icon,
   });
 
@@ -28,7 +30,7 @@ class CustomButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
-        icon: Icon(icon, color: textColor ?? Colors.white),
+        icon: Icon(icon, color: iconColor ?? textColor ?? Colors.white),
         label: Text(text,
             style: TextStyle(fontSize: 16, color: textColor ?? Colors.white)),
       );
