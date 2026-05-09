@@ -174,8 +174,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              _buildMenuItem(Icons.person_outline, 'Personal Information', false, () {}),
-              _buildMenuItem(Icons.business_outlined, 'Agency Details', false, () {}),
+              _buildMenuItem(Icons.person_outline, 'Personal Information', false, () {
+                context.push('/personal-info');
+              }),
+              _buildMenuItem(Icons.business_outlined, 'Agency Details', false, () {
+                context.push('/agency-details');
+              }),
               _buildMenuItem(Icons.help_outline, 'Help & Support', false, () {}),
               _buildMenuItem(Icons.delete_outline, 'Delete Account', true, () {
                 context.push('/delete-account');

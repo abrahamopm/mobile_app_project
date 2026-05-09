@@ -15,6 +15,8 @@ import 'features/viewing/routes/viewing_routes.dart';
 import 'features/dashboard/screens/home_dashboard.dart';
 import 'features/profile management/screens/profile_screen.dart';
 import 'features/profile management/screens/delete_account_screen.dart';
+import 'features/profile management/screens/personal_info_screen.dart';
+import 'features/profile management/screens/agency_details_screen.dart';
 
 import 'core/widgets/shell_scaffold.dart';
 
@@ -84,6 +86,14 @@ class AppRoutes {
           GoRoute(
             path: '/delete-account',
             builder: (context, state) => const DeleteAccountScreen(),
+          ),
+          GoRoute(
+            path: '/personal-info',
+            builder: (context, state) => const PersonalInfoScreen(),
+          ),
+          GoRoute(
+            path: '/agency-details',
+            builder: (context, state) => const AgencyDetailsScreen(),
           ),
           /*
           GoRoute(
