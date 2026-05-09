@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final VoidCallback? onSuffixIconTap;
   final String? prefixText;
 
   const CustomTextField({
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.suffixIcon,
+    this.onSuffixIconTap,
     this.prefixText,
   });
 
@@ -62,7 +64,12 @@ class CustomTextField extends StatelessWidget {
             fillColor: const Color(0xFFF1F4F9),
             prefixIcon: prefixIcon,
             prefixText: prefixText,
-            suffixIcon: suffixIcon,
+            suffixIcon: onSuffixIconTap != null
+                ? GestureDetector(
+                    onTap: onSuffixIconTap,
+                    child: suffixIcon,
+                  )
+                : suffixIcon,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,

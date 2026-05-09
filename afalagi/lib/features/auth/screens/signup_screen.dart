@@ -5,8 +5,22 @@ import 'package:afalagi/core/theme/theme.dart';
 import 'package:go_router/go_router.dart';
 import 'package:afalagi/core/widgets/image.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool _obscurePassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscurePassword = !_obscurePassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +58,13 @@ class SignupScreen extends StatelessWidget {
               CustomTextField(
                 label: "PASSWORD",
                 hintText: "••••••••",
-                obscureText: true,
+                obscureText: _obscurePassword,
                 prefixIcon: const Icon(Icons.lock_outline, size: 20),
-                suffixIcon: const Icon(Icons.visibility_off_outlined, size: 20),
+                suffixIcon: Icon(
+                  _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  size: 20,
+                ),
+                onSuffixIconTap: _togglePasswordVisibility,
               ),
               const SizedBox(height: 10),
               Row(

@@ -3,22 +3,6 @@ import 'package:afalagi/core/theme/theme.dart';
 import 'package:afalagi/core/widgets/button.dart';
 import 'package:afalagi/core/widgets/image.dart';
 
-void main() => runApp(const ClientApp());
-
-class ClientApp extends StatelessWidget {
-  const ClientApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Client List',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const ClientListScreen(),
-    );
-  }
-}
-
 class ClientListScreen extends StatefulWidget {
   const ClientListScreen({super.key});
 
@@ -167,7 +151,6 @@ class _ClientListScreenState extends State<ClientListScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildHeader(),
         Expanded(
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -198,41 +181,7 @@ class _ClientListScreenState extends State<ClientListScreen> {
     );
   }
 
-  Widget _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05),
-                          blurRadius: 10)
-                    ]),
-                child: Icon(Icons.home_work_outlined,
-                    color: AppTheme.primaryColor, size: 24),
-              ),
-              const SizedBox(width: 12),
-              Text('Afalagi',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppTheme.primaryColor)),
-            ],
-          ),
-          const Icon(Icons.notifications_outlined, color: Colors.black54),
-        ],
-      ),
-    );
-  }
-
+  
   Widget _buildSearchBar() {
     return Container(
       decoration: BoxDecoration(color: const Color(0xFFEDF1F5), borderRadius: BorderRadius.circular(15)),

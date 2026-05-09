@@ -4,22 +4,6 @@ import 'package:afalagi/core/widgets/image.dart';
 import 'package:afalagi/core/widgets/logout_dialog.dart';
 import 'package:go_router/go_router.dart';
 
-void main() => runApp(const ProfileApp());
-
-class ProfileApp extends StatelessWidget {
-  const ProfileApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Profile',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const ProfileScreen(),
-    );
-  }
-}
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -34,40 +18,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
       child: Column(
         children: [
-              // Custom Header
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.05),
-                                blurRadius: 10),
-                          ],
-                        ),
-                        child: Icon(Icons.home_work_outlined,
-                            color: AppTheme.primaryColor, size: 24),
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'Afalagi',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.primaryColor),
-                      ),
-                    ],
-                  ),
-                  const Icon(Icons.notifications_outlined, color: Colors.black54),
-                ],
-              ),
-              const SizedBox(height: 32),
 
               // Profile Picture
               Stack(
