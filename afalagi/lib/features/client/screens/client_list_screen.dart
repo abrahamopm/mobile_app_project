@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:afalagi/core/theme/theme.dart';
-import 'package:afalagi/core/widgets/scaffold.dart';
 import 'package:afalagi/core/widgets/button.dart';
 import 'package:afalagi/core/widgets/image.dart';
 
@@ -166,38 +165,36 @@ class _ClientListScreenState extends State<ClientListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildHeader(),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                children: [
-                  _buildSearchBar(),
-                  const SizedBox(height: 15),
-                  CustomButton(
-                    onPressed: () => _showClientDialog(),
-                    text: 'New Acquisition',
-                    icon: Icons.add,
-                  ),
-                  const SizedBox(height: 25),
-                  ..._filteredClients.asMap().entries.map((entry) {
-                    final client = entry.value;
-                    final index = _clients.indexOf(client);
-                    return client['priority'] == 'VIP' 
-                      ? Column(children: [_buildFeaturedCard(context, client, index), const SizedBox(height: 16)])
-                      : _buildClientCard(context, client, index);
-                  }),
-                  const SizedBox(height: 20),
-                ],
+    return Column(
+      children: [
+        _buildHeader(),
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            children: [
+              _buildSearchBar(),
+              const SizedBox(height: 15),
+              CustomButton(
+                onPressed: () => _showClientDialog(),
+                text: 'New Acquisition',
+                icon: Icons.add,
               ),
-            ),
-          ],
+              const SizedBox(height: 25),
+              ..._filteredClients.asMap().entries.map((entry) {
+                final client = entry.value;
+                final index = _clients.indexOf(client);
+                return client['priority'] == 'VIP'
+                    ? Column(children: [
+                        _buildFeaturedCard(context, client, index),
+                        const SizedBox(height: 16)
+                      ])
+                    : _buildClientCard(context, client, index);
+              }),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: CustomScaffold.bottomNavigationBar((index) {}, 2),
+      ],
     );
   }
 
