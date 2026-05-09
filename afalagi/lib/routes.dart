@@ -12,11 +12,9 @@ import 'features/client/screens/client_list_screen.dart';
 import 'features/client/screens/client_detail_screen.dart';
 import 'features/client/models/client_model.dart';
 import 'features/viewing/routes/viewing_routes.dart';
-import 'features/appointment/screens/dashboard_screen.dart';
-import 'features/appointment/screens/appointment_screen.dart';
-import 'features/appointment/screens/profile_screen.dart';
-import 'features/appointment/screens/settings_screen.dart';
-import 'features/appointment/screens/activity_log_screen.dart';
+import 'features/dashboard/screens/home_dashboard.dart';
+import 'features/profile management/screens/profile_screen.dart';
+
 import 'core/widgets/shell_scaffold.dart';
 
 class AppRoutes {
@@ -72,14 +70,17 @@ class AppRoutes {
                 ClientDetailScreen(client: state.extra as Client),
           ),
           ...ViewingRoutes.routes,
+          /*
           GoRoute(
             path: '/appointments',
             builder: (context, state) => const AppointmentScreen(),
           ),
+          */
           GoRoute(
             path: '/profile',
             builder: (context, state) => const ProfileScreen(),
           ),
+          /*
           GoRoute(
             path: '/settings',
             builder: (context, state) => const SettingsScreen(),
@@ -88,6 +89,7 @@ class AppRoutes {
             path: '/activity-log',
             builder: (context, state) => const ActivityLogScreen(),
           ),
+          */
         ],
       ),
     ],

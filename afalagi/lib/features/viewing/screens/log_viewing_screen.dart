@@ -1,7 +1,6 @@
 import 'package:afalagi/core/theme/theme.dart';
 import 'package:afalagi/features/viewing/models/viewing_model.dart';
 import 'package:afalagi/features/viewing/viewing_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -169,7 +168,7 @@ class _LogViewingScreenState extends State<LogViewingScreen> {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withOpacity(0.05),
+              color: AppTheme.primaryColor.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: AppTheme.primaryColor, size: 24),
