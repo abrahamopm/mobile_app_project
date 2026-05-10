@@ -1,9 +1,10 @@
 class Validators {
   static String? validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.trim().isEmpty) {
       return 'Email address is required';
     }
-    if (!value.contains('@')) {
+    final trimmedValue = value.trim();
+    if (!trimmedValue.contains('@') || trimmedValue.startsWith('@') || trimmedValue.endsWith('@')) {
       return 'Please enter a valid email address';
     }
     return null;
