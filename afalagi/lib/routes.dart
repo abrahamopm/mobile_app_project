@@ -74,12 +74,6 @@ class AppRoutes {
                 ClientDetailScreen(client: state.extra as Client),
           ),
           ...ViewingRoutes.routes,
-          /*
-          GoRoute(
-            path: '/appointments',
-            builder: (context, state) => const AppointmentScreen(),
-          ),
-          */
           GoRoute(
             path: '/profile',
             builder: (context, state) => const ProfileScreen(),
@@ -100,16 +94,6 @@ class AppRoutes {
             path: '/tag-management',
             builder: (context, state) => const TagManagementScreen(),
           ),
-          /*
-          GoRoute(
-            path: '/settings',
-            builder: (context, state) => const SettingsScreen(),
-          ),
-          GoRoute(
-            path: '/activity-log',
-            builder: (context, state) => const ActivityLogScreen(),
-          ),
-          */
         ],
       ),
     ],

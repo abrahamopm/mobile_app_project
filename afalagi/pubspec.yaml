@@ -35,7 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  go_router: ^17.2.3
+  go_router: ^17.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +47,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-  go_router_builder: ^4.3.0
+  go_router_builder: ^4.1.1
   flutter_launcher_icons: ^0.13.1
   image: ^4.2.0
 
@@ -56,25 +56,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/logo.png
-    - assets/images/favicon.png
-    - assets/images/luxury_villa.png
-    - assets/images/modern_apartment.png
-    - assets/images/bole_penthouse.png
-    - assets/images/cmc_villa.png
-    - assets/images/old_airport_apartment.png
-    - assets/images/kazanchis_office.png
-    - assets/images/agent_profile.png
-    - assets/images/client_avatar_1.png
-    - assets/images/client_avatar_2.png
-    - assets/images/generic_avatar.png
+    - assets/images/
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

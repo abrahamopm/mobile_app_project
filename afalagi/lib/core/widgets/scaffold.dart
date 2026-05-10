@@ -2,11 +2,17 @@ import 'package:afalagi/core/theme/theme.dart%20';
 import 'package:afalagi/core/widgets/image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomScaffold {
-  static AppBar appBar() {
+  static AppBar appBar(BuildContext context) {
     return AppBar(
-      title: CustomImages.appLogo(height: 40),
+      title: InkWell(
+        onTap: () {
+          context.go('/dashboard');
+        },
+        child: CustomImages.appLogo(height: 40),
+      ),
       actions: [Icon(CupertinoIcons.bell), SizedBox(width: 20)],
     );
   }

@@ -40,7 +40,7 @@ class ShellScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomScaffold.appBar(),
+      appBar: CustomScaffold.appBar(context),
       body: child,
       bottomNavigationBar: CustomScaffold.bottomNavigationBar(
         (index) => _onItemTapped(index, context),
